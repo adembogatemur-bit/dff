@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friday</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">🤖 Friday</div>
+      <button id="qrBtn" class="icon-btn" title="Telefondan bağlan">📱</button>
+    </header>
+
+    <div id="chat" class="chat"></div>
+
+    <div class="input-bar">
+      <button id="micBtn" class="icon-btn" title="Sesle konuş">🎤</button>
+      <input id="textInput" type="text" placeholder="Bir komut yaz... (örn: uygulama aç chrome)" autocomplete="off">
+      <button id="sendBtn" class="icon-btn send" title="Gönder">➤</button>
+    </div>
+  </div>
+
+  <div id="qrModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Telefondan Bağlan</h3>
+      <p>Aynı Wi-Fi ağındayken telefonunun kamerasıyla bu kodu tarat:</p>
+      <img id="qrImg" src="/qr" alt="QR kod">
+      <p id="networkUrl" class="small"></p>
+      <button id="closeModal" class="icon-btn" style="border-radius:10px;width:auto;padding:0 16px;">Kapat</button>
+    </div>
+  </div>
+
+  <audio id="ttsAudio" hidden></audio>
+
+  <script>
+    const PIN_GEREKLI = {{ 'true' if pin_gerekli else 'false' }};
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

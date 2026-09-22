@@ -1,0 +1,107 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #0f1117;
+  color: #e8e8ec;
+  height: 100vh;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 720px;
+  margin: 0 auto;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #23262f;
+}
+.logo { font-size: 20px; font-weight: 600; }
+.icon-btn {
+  background: #1b1e27;
+  border: 1px solid #2a2e3a;
+  color: #e8e8ec;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-btn:hover { background: #262b38; }
+.icon-btn.send { border-radius: 10px; width: 48px; background: #5b6cff; border: none; }
+.icon-btn.send:hover { background: #4a5ae0; }
+.icon-btn.listening { background: #ff4d4d; animation: pulse 1s infinite; }
+@keyframes pulse { 0%{opacity:1;} 50%{opacity:.5;} 100%{opacity:1;} }
+
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.msg {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  font-size: 15px;
+}
+.msg.user {
+  align-self: flex-end;
+  background: #5b6cff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.msg.friday {
+  align-self: flex-start;
+  background: #1b1e27;
+  border: 1px solid #2a2e3a;
+  border-bottom-left-radius: 4px;
+}
+
+.input-bar {
+  display: flex;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid #23262f;
+}
+.input-bar input {
+  flex: 1;
+  background: #1b1e27;
+  border: 1px solid #2a2e3a;
+  border-radius: 10px;
+  padding: 0 14px;
+  color: white;
+  font-size: 15px;
+}
+.input-bar input:focus { outline: none; border-color: #5b6cff; }
+
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #1b1e27;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 320px;
+}
+.modal-content img {
+  width: 220px; height: 220px; margin: 12px 0;
+  background: white; padding: 8px; border-radius: 8px;
+}
+.small { font-size: 12px; color: #9aa0ad; word-break: break-all; }
