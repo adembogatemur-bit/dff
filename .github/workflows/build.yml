@@ -7,28 +7,27 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Projeyi indir
+      - name: Repoyu klonla
         uses: actions/checkout@v4
 
-      - name: Python kur
+      - name: Python Kur
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Bağımlılıkları kur
+      - name: Bağımlılıkları ve PyInstaller'ı Kur
+        shell: powershell
         run: |
           python -m pip install --upgrade pip
-          if (Test-Path requirements.txt) {
-            pip install -r requirements.txt
-          }
+          if (Test-Path requirements.txt) { pip install -r requirements.txt }
           pip install pyinstaller
 
-      - name: EXE oluştur
-        run: |
-          pyinstaller --onefile --name DFF "gündem.py"
+      - name: EXE Oluştur
+        run: pyinstaller --onefile --name DFF "gündem.py"
 
-      - name: EXE'yi hazırla
+      - name: EXE'yi Hazırla (Artifact)
         uses: actions/upload-artifact@v4
         with:
-          name: DFF-Windows
+          name: DFF-Windows-EXE
           path: dist/DFF.exe
+          
